@@ -18,19 +18,19 @@ export const NavBar = () => {
 				<div className="collapse navbar-collapse">
 					<ul className="navbar-nav">
 						
-						<li className="nav-item">        
+						<li className="nav-item">
 							<a className="nav-link active" href="#">Consolas</a>
 						</li>
-						<li className="nav-item">        
+						<li className="nav-item">
 							<a className="nav-link" href="#">Juegos</a>
 						</li>
-						<li className="nav-item">        
+						<li className="nav-item">
 							<a className="nav-link" href="#">Accesorios</a>
 						</li>
 
 					</ul>
 				</div>
-				<div className="d-flex">
+				<div className="">
 					<CartWidget />
 				</div>
 			</div>

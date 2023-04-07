@@ -1,0 +1,11 @@
+.cart-widget-container{
+    position: relative;
+}
+.cart-widget-icon {
+    font-size: 2em;
+}
+.cart-badge {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+}

@@ -1,6 +1,6 @@
-.rule80 {
-  width: 80%;
-}
+.container-base {
+  padding: 0;
+}	
 
 .App {
   text-align: center;
