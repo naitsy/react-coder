@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './Item.css';
+import { Link } from 'react-router-dom';
 
 export const Item = ({ item }) => {
     return (
-        <li className='col'>
-            <div className="card" style={{ width:'100%'}}>
-                <img className="card-img-top" src={ item.img } alt={ item.name } />
-                <div className="card-body">
-                    <h4 className="card-title">{ item.name } - ${ item.price }</h4>
-                    <p className="card-text">{ item.description }</p>
-                    <a href="#" className="btn btn-primary">Comprar</a>
+        <Link to={`/item/${item.id}`}>
+            <div className="card">
+                <img src={ item.img } className="card-img" alt={ item.name } />
+                <div className="card-info-container">
+                    <div className="card-price">
+                        <p>${ item.price }</p>                
+                    </div>
+                    <div className="card-title">
+                        <p>{ item.name }</p>
+                    </div>                
                 </div>
             </div>
-        </li>
+        </Link>
     )
 }

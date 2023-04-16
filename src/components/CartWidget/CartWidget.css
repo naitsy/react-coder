@@ -1,5 +1,6 @@
 .cart-widget-container{
     position: relative;
+    padding-right: 1em;
 }
 .cart-widget-icon {
     font-size: 2em;

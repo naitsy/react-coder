@@ -2,38 +2,36 @@ import React from "react";
 import { CartWidget } from "../CartWidget/CartWidget";
 import logo from '../../party.png'; 
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 
-export const NavBar = () => {
-	// debe tener brand 
-	// debe tener una lista de categorías clickeables
+export const NavigationBar = () => {
 
 	return (
-		<nav className="navbar navbar-expand-sm bg-light navbar-light">
-
-			<div className="container-fluid">
-				<a className="navbar-brand" href="#">
-					<img src={ logo } alt="Logo" className="logo" /> 
-				</a>
-				<div className="collapse navbar-collapse">
-					<ul className="navbar-nav">
-						
-						<li className="nav-item">
-							<a className="nav-link active" href="#">Consolas</a>
+			<nav className="navbar navbar-expand-lg navbar-light bg-transparent">
+				<Link to="/" className="navbar-brand">
+					<img className="logo" src={logo} alt="logo" />
+				</Link>
+				<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<div className="collapse navbar-collapse" id="navbarText">
+					<ul className="navbar-nav mr-auto">
+						<li className="nav-item active">
+							<Link to="/" className="nav-link">Home</Link>					
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">Juegos</a>
+							<Link to="/category/consolas" className="nav-link">Consolas</Link>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">Accesorios</a>
+							<Link to="/category/juegos" className="nav-link">Juegos</Link>
 						</li>
-
+						<li className="nav-item">
+							<Link to="/category/accesorios" className="nav-link">Accesorios</Link>
+						</li>
 					</ul>
 				</div>
-				<div className="">
-					<CartWidget />
-				</div>
-			</div>
-		</nav>
+				<CartWidget />
+			</nav>
   	);
 }
