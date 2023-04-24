@@ -47,7 +47,7 @@ export const ItemListContainer = () => {
             ):             
             (
                 <>
-                    <div className="d-flex justify-content-start itemListContainer ">
+                    <div className="d-flex justify-content-start itemListContainer p-3">
                         <h2>{ categoryId ? (categoryId.charAt(0).toUpperCase() + categoryId.slice(1)) : "Todos los productos" }</h2>
                     </div>
                     <ItemList items={items} />

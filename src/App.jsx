@@ -6,10 +6,12 @@ import { NavigationBar } from "./components/NavBar/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import { BrowserRouter as Router, Routes, Navigate, Route } from "react-router-dom";
+import { CartContainer } from './components/CartContainer/CartContainer';
 
 const App = () => {
+    
     return (
-        <div className="container-fluid">
+        <div className="container-fluid p-0">
             <Router>
                 <NavigationBar />
                 <Routes>
@@ -20,6 +22,8 @@ const App = () => {
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </Router>
+            <CartContainer />
+
         </div>
     );
 };
