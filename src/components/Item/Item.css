@@ -7,17 +7,17 @@
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;
 
-    cursor: pointer;
     margin-bottom: 1.5em;
     margin-left: 1em;
 }
 
 .card-product {
+    cursor: pointer;
     width: 280px;
     height: 400px;
 }
 
-.card:hover {
+.card-product:hover {
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
     transform: scale(1.05);
 }

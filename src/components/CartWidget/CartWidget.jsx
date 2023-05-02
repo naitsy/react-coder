@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { MdOutlineShoppingCart } from "react-icons/md";
+import { BsCart3 } from "react-icons/bs";
 import "./CartWidget.css";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ export const CartWidget = () => {
     return (
         <Link to="/checkout">
             <div className="cart-widget-container">
-                <MdOutlineShoppingCart className="cart-widget-icon" />
+                <BsCart3 className="cart-widget-icon" />
                 <span className="badge bg-danger cart-badge">{ quantity }</span>
             </div>
         </Link>

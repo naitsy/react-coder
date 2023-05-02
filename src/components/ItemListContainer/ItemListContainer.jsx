@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom"; // Importar el hook "useParams" de
 import { getStock } from "../../helpers/getStock"; // Importar la función "getStock" de "helpers/getStock
 import "./ItemListContainer.css";
 
+import { getFirestore } from "../../data/firebaseConfig";
+
 // Definir el componente "ItemListContainer"
 export const ItemListContainer = () => {
     // Definir el estado inicial para los items (datos de stock) y el estado de carga (loading)
@@ -16,21 +18,43 @@ export const ItemListContainer = () => {
     // Definir un efecto que se ejecutará solo una vez después de que se monte el componente
     useEffect(() => {
         setLoading(true); // Establecer "loading" en "true" para mostrar el spinner de carga
-        // Llamar a la función "getStock" y manejar la promesa resultante
-        getStock()
-            .then((result) => {
-                if (categoryId) 
-                    result = result.filter((item) => item.category === categoryId);
+        
+        const db = getFirestore();
 
-                setItems(result);
-
-            }) // Establecer el estado "items" con los datos de stock
+        const result = db.collection("products")
+            .get()
+            .then((res) => {
+                const result = res.docs.map((doc) => {
+                    return {
+                        id: doc.id,
+                        ...doc.data()
+                    }                
+                })
+                setItems(result)
+            })
             .catch((error) => {
-                console.log(error);
-            }) // Registrar cualquier error en la consola
+                console.log(error)
+            })
             .finally(() => {
-                setLoading(false);
-            }); // Establecer "loading" en "false" para mostrar los datos de stock
+                setLoading(false)
+            })
+        
+        
+        // Llamar a la función "getStock" y manejar la promesa resultante
+        // getStock()
+        //     .then((result) => {
+        //         if (categoryId) 
+        //             result = result.filter((item) => item.category === categoryId);
+
+        //         setItems(result);
+
+        //     }) // Establecer el estado "items" con los datos de stock
+        //     .catch((error) => {
+        //         console.log(error);
+        //     }) // Registrar cualquier error en la consola
+        //     .finally(() => {
+        //         setLoading(false);
+        //     }); // Establecer "loading" en "false" para mostrar los datos de stock
     }, [categoryId]); // La dependencia vacía asegura que este efecto solo se ejecute una vez después del montaje
 
     

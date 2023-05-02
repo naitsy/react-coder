@@ -27,7 +27,7 @@ export const ItemDetail = ({ item }) => {
                     <h1>{item.name}</h1>
                     <p className="lead">{item.description}</p>
                     <h2 className="text-danger">${item.price}</h2>
-                    <p className="text-muted"><span class="badge text-bg-warning">{ item.category.charAt(0).toUpperCase() + item.category.slice(1) }</span></p>
+                    <p className="text-muted"><span className="badge text-bg-warning">{ item.category.charAt(0).toUpperCase() + item.category.slice(1) }</span></p>
                     <p>Stock: {item.stock}</p>
 
                     <ItemCounter item={item}/>

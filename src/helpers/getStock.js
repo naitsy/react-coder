@@ -1,7 +1,10 @@
 import { stock } from "../data/stock.js";
 
+
 export const getStock = () => {
     return new Promise((resolve, reject) => {
+
+
         // resolve(stock);
         setTimeout(() => {
             resolve(stock);

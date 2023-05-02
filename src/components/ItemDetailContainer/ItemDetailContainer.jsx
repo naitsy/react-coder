@@ -5,27 +5,44 @@ import { getStock } from "../../helpers/getStock";
 import { Blocks } from "react-loader-spinner";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 
+import { getFirestore } from "../../data/firebaseConfig";
+
 export const ItemDetailContainer = () => {
     const [item, setItem] = useState();
     const [loading, setLoading] = useState(true);
     const { itemId } = useParams();
 
     useEffect(() => {
-        getStock()
-            .then((result) => {
-                if (itemId) {
-                    setItem(result.find((item) => item.id === itemId));
-                } else {
-                    //mostrar error
-                    console.log("No se encontró el item");
-                }
+        const db = getFirestore()
+        const products = db.collection('products')
+        
+        products.doc(itemId)
+            .get()
+            .then(doc => {
+                setItem({id: doc.id, ...doc.data()})
             })
-            .catch((error) => {
-                console.log(error);
+            .catch(err => {
+                console.log(err)
             })
             .finally(() => {
-                setLoading(false);
-            });
+                setLoading(false)
+            })
+
+        // getStock()
+        //     .then((result) => {
+        //         if (itemId) {
+        //             setItem(result.find((item) => item.id === itemId));
+        //         } else {
+        //             //mostrar error
+        //             console.log("No se encontró el item");
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     })
+        //     .finally(() => {
+        //         setLoading(false);
+        //     });
     }, [itemId]);
 
     return (
