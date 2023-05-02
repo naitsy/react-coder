@@ -23,7 +23,7 @@ export const NavigationBar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="flex-col w-100">
-                    <div className="flex-row">
+                    <div className="flex-row my-2">
                         <form className="form-inline my-2 my-lg-0 w-50">
                             <div className="input-group">
                                 <input

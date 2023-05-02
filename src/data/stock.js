@@ -159,5 +159,14 @@ export const stock = [{
     "stock": 10,
     "price": 27.999,
     "img": "https://images.start.com.ar/HAC-P-AX7QA.jpg"
+},
+{
+    "id": "19",
+    "name": "Tears of the Kingdom",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec lacinia arcu. Sed in nisl euismod urna vehicula aliquet. Ut nisi lectus, aliquet a volutpat eget, gravida eget nibh. Aenean purus dolor, malesuada id orci sed, vehicula accumsan augue. Nam et magna eu elit eleifend feugiat sed vel tellus. Vivamus ut lobortis eros, at laoreet mauris.",
+    "category": "juegos",  
+    "stock": 10,
+    "price": 27.999,
+    "img": "https://preview.redd.it/5272xct5rnn91.jpg?auto=webp&s=b80a656b62fa640acdb184b55519860f9cfa7c87"
 }
 ]

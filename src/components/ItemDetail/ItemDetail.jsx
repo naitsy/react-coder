@@ -1,6 +1,15 @@
 import React from "react";
+import { ItemCounter } from "../ItemCounter/ItemCounter";
+import { BsArrowLeft } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 export const ItemDetail = ({ item }) => {
+
+    const navigate = useNavigate()
+    const back = () => {
+        navigate(-1)
+    }
+
     return (
         <div className="container my-5">
             <div className="row">
@@ -12,14 +21,17 @@ export const ItemDetail = ({ item }) => {
                     />
                 </div>
                 <div className="col-md-6">
+                    <button className="btn btn-secondary my-1" onClick={ back }>
+                        <BsArrowLeft /> Volver
+                    </button>
                     <h1>{item.name}</h1>
                     <p className="lead">{item.description}</p>
                     <h2 className="text-danger">${item.price}</h2>
-                    <p className="text-muted">{ item.category.charAt(0).toUpperCase() + item.category.slice(1) }</p>
+                    <p className="text-muted"><span class="badge text-bg-warning">{ item.category.charAt(0).toUpperCase() + item.category.slice(1) }</span></p>
                     <p>Stock: {item.stock}</p>
-                    <button type="button" className="btn btn-primary">
-                        Agregar al carrito
-                    </button>
+
+                    <ItemCounter item={item}/>
+
                 </div>
             </div>
         </div>
