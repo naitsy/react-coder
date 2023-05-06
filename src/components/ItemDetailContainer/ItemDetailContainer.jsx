@@ -14,7 +14,7 @@ export const ItemDetailContainer = () => {
 
     useEffect(() => {
         const db = getFirestore()
-        const products = db.collection('products')
+        const products = db.collection('products')        
         
         products.doc(itemId)
             .get()
@@ -27,22 +27,6 @@ export const ItemDetailContainer = () => {
             .finally(() => {
                 setLoading(false)
             })
-
-        // getStock()
-        //     .then((result) => {
-        //         if (itemId) {
-        //             setItem(result.find((item) => item.id === itemId));
-        //         } else {
-        //             //mostrar error
-        //             console.log("No se encontró el item");
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
-        //     .finally(() => {
-        //         setLoading(false);
-        //     });
     }, [itemId]);
 
     return (

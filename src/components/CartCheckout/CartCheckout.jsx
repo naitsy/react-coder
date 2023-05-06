@@ -1,10 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { BsTrash } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 export const CartCheckout = () => {
 
-    const { getCart, getProductsTotalPrice } = useContext(CartContext)
+    const { getCart, getProductsTotalPrice, deleteItem, clearCart } = useContext(CartContext)
     const cart = getCart()
+    const handleDelete = (id) => {
+        deleteItem( id )
+    }
+
 
     return (
         <>
@@ -24,6 +30,7 @@ export const CartCheckout = () => {
                                             <th scope="col">Cantidad</th>
                                             <th scope="col">Precio</th>
                                             <th scope="col">Total</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -37,6 +44,11 @@ export const CartCheckout = () => {
                                                         <td>{item.quantity}</td>
                                                         <td>$ {item.price}</td>
                                                         <td>$ {item.price * item.quantity}</td>
+                                                        <td>    
+                                                            <button className="btn btn-danger" onClick={() => handleDelete(item.id)}>
+                                                                <BsTrash />
+                                                            </button>
+                                                        </td>
                                                     </tr>
                                                 )                                            
                                             })
@@ -50,6 +62,11 @@ export const CartCheckout = () => {
                                                 <strong>Total:</strong>
                                             </td>
                                             <td>$ { getProductsTotalPrice() } </td>
+                                            <td>
+                                                <button className="btn btn-primary" onClick={ clearCart }>
+                                                    Vaciar carrito
+                                                </button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -66,9 +83,9 @@ export const CartCheckout = () => {
                                 <p>
                                     <strong>Total:</strong> $ { getProductsTotalPrice() }
                                 </p>
-                                <button className="btn btn-primary my-2 w-100">
+                                <Link to="/paywall" className="btn btn-primary my-2 w-100">
                                     Pagar
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

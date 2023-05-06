@@ -36,12 +36,23 @@ export const CartProvider = ({children}) => {
         return cart
     }
 
+    const deleteItem = (id) => {
+        const newCart = cart.filter(item => item.id !== id)
+        setCart(newCart)
+    }
+
+    const clearCart = () => {
+        setCart([])
+    }
+
     const value = {
         cart,
         addToCart,
         getProductsQuantity,
         getCart,
-        getProductsTotalPrice
+        getProductsTotalPrice,
+        deleteItem,
+        clearCart
     }
 
 

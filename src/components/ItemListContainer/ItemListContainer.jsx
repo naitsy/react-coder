@@ -20,8 +20,12 @@ export const ItemListContainer = () => {
         setLoading(true); // Establecer "loading" en "true" para mostrar el spinner de carga
         
         const db = getFirestore();
+        let products = db.collection("products");
+        
+        if( categoryId )
+            products = products.where("category", "==", categoryId)
 
-        const result = db.collection("products")
+        products
             .get()
             .then((res) => {
                 const result = res.docs.map((doc) => {
@@ -39,27 +43,9 @@ export const ItemListContainer = () => {
                 setLoading(false)
             })
         
-        
-        // Llamar a la función "getStock" y manejar la promesa resultante
-        // getStock()
-        //     .then((result) => {
-        //         if (categoryId) 
-        //             result = result.filter((item) => item.category === categoryId);
+    }, [categoryId])
 
-        //         setItems(result);
 
-        //     }) // Establecer el estado "items" con los datos de stock
-        //     .catch((error) => {
-        //         console.log(error);
-        //     }) // Registrar cualquier error en la consola
-        //     .finally(() => {
-        //         setLoading(false);
-        //     }); // Establecer "loading" en "false" para mostrar los datos de stock
-    }, [categoryId]); // La dependencia vacía asegura que este efecto solo se ejecute una vez después del montaje
-
-    
-
-    // Devolver la interfaz de usuario con los componentes que deben ser mostrados
     return (
         <>
         {
