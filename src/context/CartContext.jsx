@@ -1,27 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { createContext } from "react";
 import Swal from 'sweetalert2';
 
 export const CartContext = createContext();
 
-// const init = JSON.parse(localStorage.getItem('carrito')) || []
+const init = JSON.parse(localStorage.getItem("cart")) || []
 
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(init)
+
+    useEffect(() =>{
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
+
 
     const addToCart = (item, quantity) => {
         const newItem = {
             quantity,
             ...item
         }
-        setCart([...cart, newItem])
-        Swal.fire(
-            'Felicitaciones',
-            `${item.name} fue agregado al carrito`,
-            'success'
-          )
 
-        // console.table(cart)
+        const obj = cart.find(product => product.id === item.id)
+        if(obj) { obj.quantity += quantity }
+        else { setCart([...cart, newItem]) }
+        
+        Swal.fire({
+            icon: 'success',
+            title: `${item.name} fue agregado al carrito`,
+            showConfirmButton: false,
+            timer: 1400
+        })          
+
     }
 
     const getProductsQuantity = () => {

@@ -6,7 +6,7 @@ export const ItemList = ({ items }) => {
     // const [items, setItems] = useState([]);
 
     return (
-        <div className="d-flex flex-row justify-content-start flex-wrap">
+        <div className="d-flex flex-row justify-content-center flex-wrap">
             {items.map((it) => (
                 <Item key={it.id} item={it} />
             ))}

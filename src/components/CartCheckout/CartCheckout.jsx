@@ -34,12 +34,16 @@ export const CartCheckout = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {
-                                            cart?
+                                        {                                        
+                                            cart.length > 0 ?
                                             cart.map(item => {
                                                 return (
                                                     <tr key={item.id}>
-                                                        <td><img src={item.img} alt="" width="50"/></td>
+                                                        <td>
+                                                            <Link to={`/item/${item.id}`}>
+                                                                <img src={item.img} alt="" width="50"/>
+                                                            </Link>
+                                                        </td>
                                                         <td>{item.name}</td>
                                                         <td>{item.quantity}</td>
                                                         <td>$ {item.price}</td>
@@ -51,23 +55,31 @@ export const CartCheckout = () => {
                                                         </td>
                                                     </tr>
                                                 )                                            
-                                            })
-                                            :"No hay productos"
+                                            })                                            
+                                            :                                                    
+                                            <tr>
+                                                <td colSpan="6" className="text-center">
+                                                    No hay productos en el carrito
+                                                </td>
+                                            </tr>
                                         }
                                         <tr>
-                                            <td
-                                                colSpan="4"
-                                                className="text-right"
-                                            >
+                                            <td colSpan="4"
+                                                className="text-right" >
                                                 <strong>Total:</strong>
                                             </td>
                                             <td>$ { getProductsTotalPrice() } </td>
                                             <td>
-                                                <button className="btn btn-primary" onClick={ clearCart }>
+                                            {
+                                                cart.length > 0 &&                                  
+                                                <button className="btn btn-primary" onClick={ clearCart } >
                                                     Vaciar carrito
                                                 </button>
+                                            }                                                                                                
                                             </td>
                                         </tr>
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -83,9 +95,12 @@ export const CartCheckout = () => {
                                 <p>
                                     <strong>Total:</strong> $ { getProductsTotalPrice() }
                                 </p>
-                                <Link to="/paywall" className="btn btn-primary my-2 w-100">
-                                    Pagar
-                                </Link>
+                                {
+                                    cart.length > 0 &&                                  
+                                    <Link to="/paywall" className="btn btn-primary my-2 w-100">
+                                        Pagar
+                                    </Link>
+                                }
                             </div>
                         </div>
                     </div>

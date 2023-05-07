@@ -8,8 +8,8 @@ export const Item = ({ item }) => {
             <div className="card card-product">
                 <img src={ item.img } className="card-img" alt={ item.name } />
                 <div className="card-info-container">
-                    <div className="card-price">
-                        <p>${ item.price }</p>                
+                    <div className="card-price d-flex justify-content-between">
+                        <p>${ item.price }</p>                                        
                     </div>
                     <div className="card-title">
                         <p>{ item.name }</p>

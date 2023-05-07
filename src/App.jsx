@@ -1,7 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Pika } from './components/Pika/Pika';
-// import { ItemCounter } from './components/ItemCounter/ItemCounter';
-// import "./App.css";
 import { NavigationBar } from "./components/NavBar/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer";
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";

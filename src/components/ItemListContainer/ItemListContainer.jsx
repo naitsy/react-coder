@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ItemList } from "../ItemList/ItemList"; // Importar el componente "ItemList"
 import { Blocks } from "react-loader-spinner"; // Importar el componente "Blocks" de "react-loader-spinner"
 import { useParams } from "react-router-dom"; // Importar el hook "useParams" de "react-router-dom"
-import { getStock } from "../../helpers/getStock"; // Importar la función "getStock" de "helpers/getStock
 import "./ItemListContainer.css";
-
 import { getFirestore } from "../../data/firebaseConfig";
 
 // Definir el componente "ItemListContainer"
@@ -15,7 +13,6 @@ export const ItemListContainer = () => {
     const [loading, setLoading] = useState(true);
     const { categoryId } = useParams(); 
 
-    // Definir un efecto que se ejecutará solo una vez después de que se monte el componente
     useEffect(() => {
         setLoading(true); // Establecer "loading" en "true" para mostrar el spinner de carga
         
@@ -57,7 +54,7 @@ export const ItemListContainer = () => {
             ):             
             (
                 <>
-                    <div className="d-flex justify-content-start itemListContainer p-3">
+                    <div className="d-flex itemListContainer p-3">
                         <h2>{ categoryId ? (categoryId.charAt(0).toUpperCase() + categoryId.slice(1)) : "Todos los productos" }</h2>
                     </div>
                     <ItemList items={items} />
