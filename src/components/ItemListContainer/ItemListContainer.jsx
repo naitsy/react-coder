@@ -17,11 +17,10 @@ export const ItemListContainer = () => {
         setLoading(true); // Establecer "loading" en "true" para mostrar el spinner de carga
         
         const db = getFirestore();
-        let products = db.collection("products");
+        let products = categoryId ?
+        db.collection("products").where("category", "==", categoryId) : 
+        db.collection("products");
         
-        if( categoryId )
-            products = products.where("category", "==", categoryId)
-
         products
             .get()
             .then((res) => {

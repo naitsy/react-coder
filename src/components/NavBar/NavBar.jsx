@@ -4,27 +4,27 @@ import logo from "../../party.png";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { getFirestore } from "../../data/firebaseConfig";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 
 export const NavigationBar = () => {
     const [categories, setCategories] = useState([])
 
-    useEffect(() => {
-        const db = getFirestore()
-        db.collection("categories")
-            .get()
-            .then((res) => {
-                const result =  res.docs.map( doc => {
-                    return {
-                        id: doc.id,
-                        ...doc.data()
-                    }
-                })
-                setCategories(result)
-            })
-            .catch((err) => {console.log(err)})
+    // useEffect(() => {
+    //     const db = getFirestore()
+    //     db.collection("categories")
+    //         .get()
+    //         .then((res) => {
+    //             const result = res.docs.map( doc => {
+    //                 return {
+    //                     ...doc.data()
+    //                 }
+    //             })
+    //             setCategories(result)
+    //         })
+    //         .catch((err) => {console.log(err)})
 
-    },[categories])
+    // },[])
 
 
     return (
@@ -46,15 +46,7 @@ export const NavigationBar = () => {
                 </button>
                 <div className="flex-col w-100">
                     <div className="flex-row my-2">
-                        <form className="form-inline my-2 my-lg-0 w-50">
-                            <div className="input-group">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Buscar"
-                                />
-                            </div>
-                        </form>
+                        <SearchBar />
                     </div>
                     <div
                         className="collapse navbar-collapse flex-row"
