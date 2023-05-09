@@ -1,7 +1,7 @@
 
 # E-Commerce Demo
 
-Este proyecto es una demo de ecommerce de juegos y accesorios de gamming, realizado con ReactJs y Firebase para el curso de ReactJs de Coderhouse. 
+Este proyecto es una demo de ecommerce de juegos y accesorios de gamming, realizado con ReactJs y Firebase para el curso de ReactJs de Coderhouse. El demo no es responsivo, por lo cual se recomienda no verlo en dispositivos portatiles.
 
 El proyecto incluye los siguientes features: 
 - Listado de productos 
