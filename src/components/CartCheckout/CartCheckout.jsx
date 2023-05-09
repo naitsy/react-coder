@@ -46,8 +46,8 @@ export const CartCheckout = () => {
                                                         </td>
                                                         <td>{item.name}</td>
                                                         <td>{item.quantity}</td>
-                                                        <td>$ {item.price}</td>
-                                                        <td>$ {item.price * item.quantity}</td>
+                                                        <td>$ {item.price.toLocaleString("es-AR")}</td>
+                                                        <td>$ {(item.price * item.quantity).toLocaleString("es-AR")}</td>
                                                         <td>    
                                                             <button className="btn btn-danger" onClick={() => handleDelete(item.id)}>
                                                                 <BsTrash />
@@ -68,7 +68,7 @@ export const CartCheckout = () => {
                                                 className="text-right" >
                                                 <strong>Total:</strong>
                                             </td>
-                                            <td>$ { getProductsTotalPrice() } </td>
+                                            <td>$ { getProductsTotalPrice().toLocaleString("es-AR") } </td>
                                             <td>
                                             {
                                                 cart.length > 0 &&                                  
@@ -93,7 +93,7 @@ export const CartCheckout = () => {
                             </div>
                             <div className="card-body">
                                 <p>
-                                    <strong>Total:</strong> $ { getProductsTotalPrice() }
+                                    <strong>Total:</strong> $ { getProductsTotalPrice().toLocaleString("es-AR") }
                                 </p>
                                 {
                                     cart.length > 0 &&                                  

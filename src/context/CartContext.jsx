@@ -20,8 +20,16 @@ export const CartProvider = ({children}) => {
             ...item
         }
 
-        const obj = cart.find(product => product.id === item.id)
-        if(obj) { obj.quantity += quantity }
+        let replaced = false 
+        const newCart = cart.map( product => {
+            if( product.id === item.id ){
+                product.quantity += quantity 
+                replaced = true;
+            }
+            return product
+        })
+
+        if( replaced ) { setCart(newCart) }
         else { setCart([...cart, newItem]) }
         
         Swal.fire({

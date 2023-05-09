@@ -10,21 +10,21 @@ import { SearchBar } from "../SearchBar/SearchBar";
 export const NavigationBar = () => {
     const [categories, setCategories] = useState([])
 
-    // useEffect(() => {
-    //     const db = getFirestore()
-    //     db.collection("categories")
-    //         .get()
-    //         .then((res) => {
-    //             const result = res.docs.map( doc => {
-    //                 return {
-    //                     ...doc.data()
-    //                 }
-    //             })
-    //             setCategories(result)
-    //         })
-    //         .catch((err) => {console.log(err)})
+    useEffect(() => {
+        const db = getFirestore()
+        db.collection("categories")
+            .get()
+            .then((res) => {
+                const result = res.docs.map( doc => {
+                    return {
+                        ...doc.data()
+                    }
+                })
+                setCategories(result)
+            })
+            .catch((err) => {console.log(err)})
 
-    // },[])
+    },[])
 
 
     return (

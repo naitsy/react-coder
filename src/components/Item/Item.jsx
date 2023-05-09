@@ -9,7 +9,7 @@ export const Item = ({ item }) => {
                 <img src={ item.img } className="card-img" alt={ item.name } />
                 <div className="card-info-container">
                     <div className="card-price d-flex justify-content-between">
-                        <p>${ item.price }</p>                                        
+                        <p>${ item.price.toLocaleString("es-AR") }</p>                                        
                     </div>
                     <div className="card-title">
                         <p>{ item.name }</p>
